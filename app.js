@@ -3,7 +3,15 @@ var express = require("express");
 var app = express();
 
 app.get("/set", function(req, res) {
-  res.send("This is the set route");
+  
+  var value = Object.values(req.query);
+  var key = Object.keys(req.query);
+
+  var store = {};
+  store[key] = value;
+  res.send(`${key} stored`);
+    
+
 });
 
 app.get("/get", function(req, res) {
